@@ -17,6 +17,6 @@ if __name__ == "__main__":
     engine = create_engine(DB_URI)
     with engine.connect() as con:
         rs = con.execute("show tables")
-        print rs.fetchone()
+        print(rs.fetchone())
 
 

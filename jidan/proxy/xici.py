@@ -72,11 +72,8 @@ class XiCi(object):
         }
         try:
             r = requests.get(url, headers=headers, proxies=proxies)
-            print "$$$$$$$$$$$$$$$$$$$$$$"+ r.status_code
             return r.status_code != 200
         except Exception as e:
-            print e
-            print "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             return False
 
     # 获取随机header

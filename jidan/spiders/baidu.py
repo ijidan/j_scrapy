@@ -10,4 +10,4 @@ class BaiduSpider(scrapy.Spider):
     def parse(self, response):
         text = response.text
         text = text.encode("GB18030", "ignore")
-        print text
+        print(text)

@@ -11,7 +11,7 @@ class HttpbinSpider(scrapy.Spider):
     def parse(self, response):
         text = response.text
         text = text.encode("GB18030", "ignore")
-        print response.text
+        print(response.text)
 
 
 if __name__ == "__main__":

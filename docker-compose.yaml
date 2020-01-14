@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  spider:
+    build: .
+    volumes:
+     - .:/code
+    links:
+     - redis
+    depends_on:
+     - redis
+    tty: true
+  redis:
+    image: redis
+    ports:
+    - "63790:6379"
