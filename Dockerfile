@@ -17,7 +17,7 @@ ADD . /code
 WORKDIR /code
 
 # install requirements
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 
 
