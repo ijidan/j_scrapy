@@ -67,7 +67,7 @@ DOWNLOADER_MIDDLEWARES = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     'jidan.pipelines.MysqlPipeline': 300,
-    # 'scrapy_redis.pipelines.RedisPipeline': 300
+    'scrapy_redis.pipelines.RedisPipeline': 299
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -91,10 +91,10 @@ ITEM_PIPELINES = {
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
-# DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
-# SCHEDULER_PERSIST = True
-# SCHEDULER_FLUSH_ON_START = False
+# 分布式爬虫
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+SCHEDULER_PERSIST = True
 
 DB_USERNAME = 'hnb'  # 数据库用户名
 DB_PASSWORD = 'alyHnb2015'  # 数据库密码
@@ -102,4 +102,7 @@ DB_HOST = '172.16.10.251'  # 主机名
 DB_PORT = 3306  # 端口号 mysql 默认的是3306
 DB_NAME = 'jidan'  # 数据库的名字
 
-# REDIS_URL = 'redis://:@172.16.10.251:6379'
+REDIS_HOST = 'redis'
+REDIS_PORT = 6379
+
+# REDIS_URL = 'redis://@192.168.33.10:63790/jidan'

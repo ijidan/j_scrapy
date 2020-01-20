@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from bs4 import BeautifulSoup
+from scrapy_redis.spiders import RedisSpider
 import logging
 from jidan.items import QuotesItem
 
 
-class QuotesSpider(scrapy.Spider):
+class QuotesSpider(RedisSpider):
     name = 'quotes'
     allowed_domains = ['quotes.toscrape.com']
-    start_urls = ['http://quotes.toscrape.com/']
+    redis_key = name+":start_urls"
+    # start_urls = ['http://quotes.toscrape.com/']
 
     def parse(self, response):
         quotes = BeautifulSoup(response.text, 'lxml')

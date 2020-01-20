@@ -6,7 +6,7 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 from fake_useragent import UserAgent
 from scrapy import signals
-
+import os
 from jidan.utils import Logger
 from jidan.proxy.xici import XiCi
 
@@ -110,7 +110,11 @@ class JidanDownloaderMiddleware(object):
 class RandomUserAgentMiddleware(object):
 
     def __init__(self, crawler):
-        self.ua = UserAgent()
+        location = os.getcwd() + '/jidan/fake_useragent.json'
+        if os.path.exists(location) is True:
+            self.ua = UserAgent(path=location)
+        else:
+            self.ua = UserAgent(use_cache_server=False, cache=False, verify_ssl=False)
         self.logger = Logger()
 
     @classmethod
