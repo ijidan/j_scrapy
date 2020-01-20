@@ -111,8 +111,7 @@ class RandomUserAgentMiddleware(object):
 
     def __init__(self, crawler):
         location = os.getcwd() + '/jidan/fake_useragent.json'
-        print("==========="+location+"===================")
-        if os.path.exists(location):
+        if os.path.exists(location) is True:
             self.ua = UserAgent(path=location)
         else:
             self.ua = UserAgent(use_cache_server=False, cache=False, verify_ssl=False)
